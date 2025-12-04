@@ -1,9 +1,6 @@
 import { Router } from "express";
-
-
+import * as bannerController from '../controllers/banner'
 export const routes=Router()
 
+routes.get('/banners',bannerController.getBanner)
 
-routes.get('/ping',(req,res)=>{
-    res.json({pong:true})
-})
