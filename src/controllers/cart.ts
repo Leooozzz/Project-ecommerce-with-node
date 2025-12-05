@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import { cartMountSchema } from "../schemas/cart-mount-schmea";
 import { getProduct } from "../services/product";
 import { getAbsoluteImageUrl } from "../utils/get-absolute-image-url";
+import { calculateShippingSchema } from "../schemas/calculate-shipping-schema";
 
 export const cartMount:RequestHandler=async(req,res)=>{
     const parseResult=cartMountSchema.safeParse(req.body)
@@ -24,4 +25,16 @@ export const cartMount:RequestHandler=async(req,res)=>{
         }
     }
     res.json({error:null,products})
+}
+
+
+export const calculateShipping:RequestHandler=async(req,res)=>{
+    const parseResult= calculateShippingSchema.safeParse(req.query)
+    if(!parseResult.success){
+        return res.status(400).json({error:"Cep invalido"})
+    }
+    
+    const {zipcode}=parseResult.data
+
+    res.json({error:null,zipcode,cost:7,day:3})
 }
