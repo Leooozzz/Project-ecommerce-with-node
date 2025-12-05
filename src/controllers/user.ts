@@ -30,3 +30,8 @@ export const login: RequestHandler = async (req, res) => {
     }
     res.json({error:null,token})
 };
+
+
+export const addRess:RequestHandler=async(req,res)=>{
+  
+}
