@@ -6,6 +6,7 @@ import { calculateShippingSchema } from "../schemas/calculate-shipping-schema";
 import { cartFinishSchema } from "../schemas/cart-finish-schema";
 import { getAddressesById } from "../services/user";
 import { createOrder } from "../services/order";
+import { createPaymentLink } from "../services/payment";
 
 export const cartMount: RequestHandler = async (req, res) => {
   const parseResult = cartMountSchema.safeParse(req.body);
@@ -69,7 +70,14 @@ export const finish: RequestHandler = async (req, res) => {
     cart
   })
 
-  let url = ''
-
+  if(!orderId){
+    return res.status(400).json({error:"Ocorreu um erro"})
+  }
+  const url = await createPaymentLink({
+    cart,shippingCost,orderId
+  })
+  if(!url){
+    return res.status(400).json({error:"Ocorreu um erro"})
+  }
   res.json({ error: null,url });
 };
