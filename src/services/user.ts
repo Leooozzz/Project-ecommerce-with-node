@@ -1,6 +1,7 @@
 import { v4 } from "uuid";
 import { prisma } from "../libs/prisma";
 import { compare, hash } from "bcrypt";
+import { Address } from "../types/add-ress";
 
 export const createUser = async (
   name: string,
@@ -35,16 +36,55 @@ export const logUser = async (email: string, password: string) => {
   await prisma.user.update({
     where: { id: user.id },
     data: {
-      token 
+      token,
     },
   });
   return token;
 };
 
-export const getUserBytoken=async(token:string)=>{
-    const user=await prisma.user.findFirst({
-        where:{token}
-    })
-    if(!user)return null
-    return user.id
-}
+export const getUserBytoken = async (token: string) => {
+  const user = await prisma.user.findFirst({
+    where: { token },
+  });
+  if (!user) return null;
+  return user.id;
+};
+
+export const createAddRess = async (userId: number, address: Address) => {
+  return await prisma.userAddress.create({
+    data: {
+      ...address,
+      userId,
+    },
+  });
+};
+export const getAddressesFromUserId = async (userId: number) => {
+  return await prisma.userAddress.findMany({
+    where: { userId },
+    select: {
+      id: true,
+      zipcode: true,
+      street: true,
+      number: true,
+      city: true,
+      state: true,
+      country: true,
+      complement: true,
+    },
+  });
+};
+export const getAddressesById = async (userId: number, addressId: number) => {
+  return prisma.userAddress.findFirst({
+    where: { id: addressId, userId },
+    select: {
+      id: true,
+      zipcode: true,
+      street: true,
+      number: true,
+      city: true,
+      state: true,
+      country: true,
+      complement: true,
+    },
+  });
+};
