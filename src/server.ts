@@ -11,6 +11,9 @@ const server=express()
 
 server.use(cors())
 server.use(helmet())
+
+server.use('/webhook/stripe',express.raw({type: 'application/json'}))
+
 server.use(express.static('public'))
 server.use(express.json())
 
