@@ -13,10 +13,10 @@ type MenuItem = {
 
 export function Header() {
   const menu: MenuItem[] = [
-    { label: "SEDAS", href: "/category/sedas" },
-    { label: "PITEIRAS", href: "/category/piteiras" },
-    { label: "CUIAS", href: "/category/cuias" },
-    { label: "KITS", href: "/category/kits" },
+    { label: "Sedas", href: "/categories/sedas" },
+    { label: "Piteiras", href: "/categories/piteiras" },
+    { label: "Cuias", href: "/categories/cuias" },
+    { label: "Kits", href: "/categories/kits" },
   ];
   const [menuOpened, setMenuOpened] = useState(false);
   return (
@@ -40,7 +40,7 @@ export function Header() {
           <div className="flex-1">
             <div className="w-full hidden md:flex items-center px-6 gap-6">
               <div className="flex-1">
-                  <ul className="flex gap-10 font-medium text-gray-600">
+                  <ul className="flex gap-10 font-bold text-gray-600">
                     {menu.map((item) => (
                       <li key={item.label}>
                         <Link key={item.label} href={item.href}>

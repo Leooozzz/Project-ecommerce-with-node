@@ -14,11 +14,11 @@ export const ProductItem = ({data}:Props) => {
         <div className="bg-white border border-gray-200 rounded-sm p-6">
             <div className="flex justify-end">
                 <div
-                    className="w-12 h-12 border border-gray-200 rounded-sm cursor-pointer"
+                    className="w-10 h-10 border flex justify-center items-center border-gray-100 rounded-sm cursor-pointer"
                     onClick={() => setLiked(!liked)}
                 >
                     <Image
-                        src={liked ? "/assets/ui/heart-3-fill.png" : "/assets/ui/heart-3-line.png"}
+                        src={liked ? "/assets/ui/heart-3-fills.png" : "/assets/ui/heart-3-line.png"}
                         alt=""
                         width={24}
                         height={24}

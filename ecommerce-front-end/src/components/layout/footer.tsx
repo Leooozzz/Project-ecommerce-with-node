@@ -29,8 +29,8 @@ export const Footer = () => {
   ];
 
   return (
-   <footer >
-    <div className="w-full max-w-6xl mx-auto p-6 flex flex-col md:flex-row items-center gap-6">
+   <footer className="mt-10">
+    <div className="w-full max-w-6xl mx-auto p-6 flex flex-col md:flex-row items-center gap-6 ">
                     <Image
                         src={'/assets/ui/mail-send-line-balck.png'}
                         alt=""
@@ -44,7 +44,7 @@ export const Footer = () => {
                     <form method="POST" className="w-full flex-1 flex flex-col gap-4 md:flex-row">
                         <Input
                             type="text"
-                            className="flex-1 border border-gray-200 rounded-sm outline-0"
+                            className="flex-1 border border-gray-200 rounded-sm outline-0 h-16"
                             placeholder="Qual seu e-mail?"
                         />
 
@@ -53,7 +53,8 @@ export const Footer = () => {
                         </button>
                     </form>
                 </div>
-    <div className="bg-black w-full py-10">
+
+    <div className="bg-black w-full py-10 mt-10">
      <div className="max-w-6xl mx-auto px-4">
 
     <div className="mt-4 flex flex-col md:flex-row justify-between items-center gap-6">
