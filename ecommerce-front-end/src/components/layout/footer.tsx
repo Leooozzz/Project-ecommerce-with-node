@@ -15,10 +15,10 @@ type SocialMediaProps = {
 
 export const Footer = () => {
   const menu: FooterItem[] = [
-    { label: "Sedas", href: "/category/sedas" },
-    { label: "Piteiras", href: "/category/piteiras" },
-    { label: "Cuias", href: "/category/cuias" },
-    { label: "Kits", href: "/category/kits" },
+    { label: "Sedas", href: "/categories/sedas" },
+    { label: "Piteiras", href: "/categories/piteiras" },
+    { label: "Cuias", href: "/categories/cuias" },
+    { label: "Kits", href: "/categories/kits" },
   ];
 
   const socialMedia: SocialMediaProps[] = [

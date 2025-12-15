@@ -1,8 +1,11 @@
 import { ImageSlider } from "@/components/product/image-slide"
 import { ProductDescription } from "@/components/product/product-description"
 import { ProductsDetails } from "@/components/product/product-details"
+import { RelatedProducts } from "@/components/product/related-products"
+import { RelatedProductsSkeleton } from "@/components/product/related-products-skeleton"
 import { data } from "@/data"
 import Link from "next/link"
+import { Suspense } from "react"
 
 type Props= {
    params: Promise<{id:string}>
@@ -19,9 +22,13 @@ export default async function page ({params}:Props){
          <ProductsDetails product={data.products}/>
       </div>
       <ProductDescription text={data.products.description}/>
-      <div className="">
-         <h3>Você tambem pode gostar: </h3>
-      </div>
+    
+      
+        <Suspense fallback={<RelatedProductsSkeleton/>}>
+            <RelatedProducts id={data.products.id}/>
+        </Suspense>
+  
+      
     </div>
  )
 }

@@ -7,6 +7,7 @@ import { Separator } from "../ui/separator";
 type Props = {
   text: string;
 };
+
 export const ProductDescription = ({ text }: Props) => {
   const [opened, setOpened] = useState(true);
   return (

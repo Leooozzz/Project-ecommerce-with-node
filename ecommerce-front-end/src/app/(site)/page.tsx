@@ -2,7 +2,6 @@ import { Banners } from "@/components/home/banners";
 import { MostSoldProducts } from "@/components/home/most-sold-products";
 import { MostViwedProduct } from "@/components/home/most-viewed-product";
 import { ProductListSkeleton } from "@/components/home/product-list-skeleton";
-import { Footer } from "@/components/layout/footer";
 import { data } from "@/data";
 import Image from "next/image";
 import { Suspense } from "react";
