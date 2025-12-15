@@ -25,7 +25,7 @@ export const ProductListFilter = () => {
     <div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="text-3xl">
-          <strong className="">99</strong> Produtos
+          <strong className="">{data.product.length}</strong> Produto{data.product.length !=1 ? 's' : ''}
         </div>
         <div className="w-full flex flex-row md:max-w-70 gap-5">
           <div className="flex-1">
