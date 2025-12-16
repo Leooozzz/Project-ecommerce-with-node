@@ -4,13 +4,26 @@ import { ProductComplete } from "@/types/Product";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { useState } from "react";
+import { useCartStore } from "@/stores/cart";
+import { setCartState } from "@/actions/set-cart-state";
+import { redirect } from "next/navigation";
+
 
 type Props = {
   product: ProductComplete;
 };
 export const ProductsDetails = ({ product }: Props) => {
   const [liked, setLiked] = useState(product.liked);
-  const addToCart = async () => {};
+
+  const cartStore=useCartStore(state=>state)
+
+  const addToCart = async () =>{
+    cartStore.addItem({productId: product.id,quantity: 1})
+    const updateCart=useCartStore.getState().cart
+    await setCartState(updateCart);
+    redirect('/cart')
+  }
+
 
   return (
     <div className="flex-1">
@@ -20,6 +33,7 @@ export const ProductsDetails = ({ product }: Props) => {
         R$ {product.price.toFixed(2)}
       </div>
       <div className="text-sm text-[#7F7F7F] mb-6">Em ate 12X no cartão</div>
+      <div>cart:{cartStore.cart.length}</div>
       <div className="flex gap-4">
         <Button
           className="bg-black p-7 hover:opacity-90 cursor-pointer flex-1 max-w-xs"

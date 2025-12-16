@@ -1,6 +1,7 @@
-import { getServerCart } from "@/lib/server-cookies"
-import { cartItem } from "@/types/cart-item"
+"use server"
+import { cartItem } from "@/types/cart-item";
+import { setServerCart } from "@/lib/server-cookies";
 
-export const setCartState = async (cart:cartItem )=>{
-    await setCartState(cart)
+export const setCartState = async (cart:cartItem [])=>{
+    await setServerCart(cart)
 }
