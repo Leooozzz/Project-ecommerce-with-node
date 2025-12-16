@@ -1,6 +1,6 @@
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/Header";
-import { StoreHidration } from "../providers/store-hidration";
+import { StoreHidration } from "../../providers/store-hidration";
 
 export default function SiteLayout({
   children,
