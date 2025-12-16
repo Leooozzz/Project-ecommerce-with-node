@@ -19,7 +19,7 @@ export const ProductsDetails = ({ product }: Props) => {
 
   const addToCart = async () =>{
     cartStore.addItem({productId: product.id,quantity: 1})
-    const updateCart=useCartStore.getState().cart
+    const updateCart=useCartStore.getState().cart 
     await setCartState(updateCart);
     redirect('/cart')
   }
