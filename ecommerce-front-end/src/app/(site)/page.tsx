@@ -1,15 +1,16 @@
+import { getBanner } from "@/actions/get-banners";
 import { Banners } from "@/components/home/banners";
 import { MostSoldProducts } from "@/components/home/most-sold-products";
 import { MostViwedProduct } from "@/components/home/most-viewed-product";
 import { ProductListSkeleton } from "@/components/home/product-list-skeleton";
-import { data } from "@/data";
 import Image from "next/image";
 import { Suspense } from "react";
 
-const Page = () => {
+const Page =async () => {
+  const banner=await getBanner()
   return (
     <div>
-      <Banners list={data.banners} />
+      <Banners list={banner} />
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 mt-6 md:mt-12 justify-between">
         <div className="flex-1">
           <div className="border p-6 flex gap-9 border-gray-200 rounded-sm">

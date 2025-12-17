@@ -2,17 +2,15 @@
 import Image from "next/image";
 import { FilterItem } from "./filter-item";
 import { useState } from "react";
+import { CategoryMetadataValue } from "@/types/category";
 
 type Props = {
   id: string;
   name: string;
-  items: {
-    id: string;
-    label: string;
-  }[];
+  values:CategoryMetadataValue[]
 };
 
-export const FilterGroup = ({ id, name, items }: Props) => {
+export const FilterGroup = ({ id, name,values }: Props) => {
   const [opened, setOpened] = useState(true);
 
   return (
@@ -39,7 +37,7 @@ export const FilterGroup = ({ id, name, items }: Props) => {
           opened ? "max-h-96" : "max-h-0"
         }`}
       >
-        {items.map((item) => (
+        {values.map((item) => (
           <FilterItem key={item.id} groupId={id} item={item} />
         ))}
       </div>

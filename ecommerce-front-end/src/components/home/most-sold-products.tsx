@@ -1,7 +1,11 @@
-import { data } from "@/data";
 import { ProductList } from "../layout/product-list";
+import { getProducts } from "@/actions/get-products";
 
 export const MostSoldProducts = async () => {
+   const products=await getProducts({
+      orderBy:'seeling',
+      limit:4
+    })
   return (
     <div className="mt-10">
       <h1 className="text-2xl font-medium md:text-2xl flex justify-center md:justify-start">
@@ -11,7 +15,7 @@ export const MostSoldProducts = async () => {
         Campeões de vendas da nossa loja
       </p>
       <div className="mt-9">
-       <ProductList list={data.product}/>
+       <ProductList list={products}/>
       </div>
     </div>
   );

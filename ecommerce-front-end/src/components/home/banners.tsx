@@ -50,7 +50,8 @@ export const Banners = ({ list }: Props) => {
               alt="Imagens de banner"
               height={400}
               width={1200}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-center"
+              unoptimized
             />
           </Link>
         ))}

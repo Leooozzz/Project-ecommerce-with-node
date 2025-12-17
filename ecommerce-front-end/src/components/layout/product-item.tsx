@@ -27,7 +27,7 @@ export const ProductItem = ({data}:Props) => {
             </div>
            <div className="flex justify-center">
             <Link href={`/product/${data.id}`}>
-                <Image src={data.image} alt={data.label} width={200} height={200} className="max-w-full h-48 "/>
+                <Image src={data.image} alt={data.label} width={200} height={200} className="max-w-full h-48 " unoptimized/>
             </Link>
            </div>
            <div className="flex justify-center mt-9 text-lg font-bold"><Link href={`/product/${data.id}`}>{data.label}</Link></div>

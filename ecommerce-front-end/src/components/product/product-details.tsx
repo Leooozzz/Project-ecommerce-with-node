@@ -33,7 +33,6 @@ export const ProductsDetails = ({ product }: Props) => {
         R$ {product.price.toFixed(2)}
       </div>
       <div className="text-sm text-[#7F7F7F] mb-6">Em ate 12X no cartão</div>
-      <div>cart:{cartStore.cart.length}</div>
       <div className="flex gap-4">
         <Button
           className="bg-black p-7 hover:opacity-90 cursor-pointer flex-1 max-w-xs"

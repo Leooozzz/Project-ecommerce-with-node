@@ -11,6 +11,12 @@ const server=express()
 
 server.use(cors())
 server.use(helmet())
+server.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  })
+);
+
 
 server.use('/webhook/stripe',express.raw({type: 'application/json'}))
 

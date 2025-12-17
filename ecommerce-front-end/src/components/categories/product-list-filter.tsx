@@ -12,11 +12,20 @@ import { FilterGroup } from "./filter-group";
 import { data } from "@/data";
 import { ProductItem } from "../layout/product-item";
 import { filters } from "@/types/side-bar-category";
+import { Category, CategoryMetadata } from "@/types/category";
+import { Product } from "@/types/Product";
 
-export const ProductListFilter = () => {
+type Props= {
+  category:Category,
+  metadata:CategoryMetadata[]
+}
+export const ProductListFilter = ({category,metadata}:Props) => {
   const queryString = useQueryString();
   const [filterOpened, setFilterOpened] = useState(false);
+  const [product,setProduct]=useState<Product[]>([])
   const order = queryString.get("order") ?? "views";
+
+
 
   const handleSelectChange = (value: string) => {
     queryString.set("order", value);
@@ -54,12 +63,12 @@ export const ProductListFilter = () => {
             filterOpened ? "block" : "hidden"
           } md:block`}
         >
-          {filters.map((filter) => (
+          {metadata.map((item) => (
             <FilterGroup
-              key={filter.id}
-              id={filter.id}
-              name={filter.name}
-              items={filter.items}
+              key={item.id}
+              id={item.id}
+              name={item.name}
+               values={item.values}
             />
           ))}
         </div>
