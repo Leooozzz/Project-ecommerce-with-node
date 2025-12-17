@@ -13,12 +13,15 @@ import { Address } from "@/types/address";
 import { useAuthStore } from "@/stores/auth";
 import { getUserAddresses } from "@/actions/get-user-address";
 import { getShippingInfo } from "@/actions/get-shipping-info";
+import { AddRessModal } from "./address-modal";
+import { addUserAddress } from "@/actions/add-user-address";
 
 export const ShippingBoxLogged = () => {
   const { token, hydrated } = useAuthStore((state) => state);
   const cartStore = useCartStore((state) => state);
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [pending, startTransition] = useTransition();
+  const [modalOpened,setModalOpened]=useState(false)
 
   const updateShippingInfo=async()=>{
     if(cartStore.shippingZipcode.length > 4){
@@ -56,6 +59,15 @@ export const ShippingBoxLogged = () => {
         }
       }
   } 
+
+  const handleAddress=async(address:Address)=>{
+    if(!token) return 
+    const newAddresses=await addUserAddress(token,address)
+    if(newAddresses){
+      setAddresses(newAddresses)
+      setModalOpened(false)
+    }
+  }
   return (
 
 
@@ -72,7 +84,8 @@ export const ShippingBoxLogged = () => {
                 </option>
             ))}
         </select>
-         <Button className="cursor-pointer bg-white text-black text-sm w-full hover:bg-white">Adicionar novo endereço</Button>
+         <Button onClick={()=>setModalOpened(true)} className="cursor-pointer bg-white text-black text-sm w-full hover:bg-white">Adicionar novo endereço</Button>
+          <AddRessModal opened={modalOpened} onClose={()=>setModalOpened(false)} onAdd={handleAddress}/>
       </div>
 
   );
