@@ -43,4 +43,9 @@ export const data = {
     liked: false,
     description: "A piteira de vidro é um acessório reutilizável projetado para proporcionar uma experiência de fumo mais suave, confortável e com redução de danos. Ela atua resfriando a fumaça, filtrando impurezas e evitando o contato direto com a brasa. ",
   },
+  addresses:[
+    {id:1,zipcode:'12345',street:'Rua teste 1',number:'1234',city:'macacolandi',state:'algum',country:'Pais'},
+     {id:2,zipcode:'1234332',street:'Rua321312 teste 2',number:'1234',city:'macacolandi',state:'algum',country:'Pais'},
+      {id:3,zipcode:'12332145',street:'Ru3212a teste 3',number:'1234',city:'macacolandi',state:'algum',country:'Pais'}
+  ]
 };
