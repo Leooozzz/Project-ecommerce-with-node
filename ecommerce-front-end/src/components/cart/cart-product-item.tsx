@@ -44,6 +44,7 @@ export const CartProductItem = ({ item }: Props) => {
           width={96}
           height={96}
           className="rounded-sm size-24 md:size-16"
+          unoptimized
         />
       </div>
       <div className="flex-1 flex flex-col md:flex-row justify-between md:items-center">

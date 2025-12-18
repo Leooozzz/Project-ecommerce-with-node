@@ -1,3 +1,4 @@
+"use server"
 import { api } from "@/lib/axios"
 import { Product } from "@/types/Product"
 

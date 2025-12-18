@@ -1,11 +1,23 @@
 "use server"
 
+import { api } from "@/lib/axios"
+
 type loginData={
     email:string,
     password:string
 }
 export const login=async({email,password}:loginData):Promise<{error:string|null,token?:string}>=>{
+    try{
+        const response=await api.post('/user/login',{email,password})
+        if(response.status === 200 && response.data.token){
+            return{
+                error:null,
+                token:response.data.token 
+            }
+        }
+    }catch{
 
-    return {error:null,token:'exemplo'}
+    }
+    return{error:"Erro ao efetuar login"}
 
 }

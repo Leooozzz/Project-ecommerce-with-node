@@ -1,5 +1,7 @@
 "use server";
 
+import { api } from "@/lib/axios";
+
 type ShippingInfoResponse = {
   zipcode: string;
   cost: number;
@@ -9,9 +11,13 @@ type ShippingInfoResponse = {
 export const getShippingInfo = async (
   zipcode: string
 ): Promise<ShippingInfoResponse | false> => {
-  return {
-    zipcode: "1234",
-    cost: 3,
-    days: 9,
-  };
+  try{
+    const response = await api.get('/cart/shipping',{params:{zipcode}})
+    if(response.status ===200){
+      return response.data as ShippingInfoResponse
+    }
+  }catch{
+
+  }
+  return false
 };

@@ -25,7 +25,7 @@ export default async function Page({ params, searchParams }: Props) {
       <div className="text-[#7F7F7F] mb-4">
         <Link href={"/"}>Home</Link> &gt; {categoryWithMetadata.category.name}
       </div>
-      <ProductListFilter category={categoryWithMetadata.category} metadata={categoryWithMetadata.metadata}/>
+      <ProductListFilter category={categoryWithMetadata.category} metadata={categoryWithMetadata.metadata} filters={filters}/>
     </div>
   );
 }
