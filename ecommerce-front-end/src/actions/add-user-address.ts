@@ -1,7 +1,25 @@
-"use server"
-import { data } from "@/data";
+"use server";
+import { api } from "@/lib/axios";
 import { Address } from "@/types/address";
+import { getUserAddresses } from "./get-user-address";
 
-export const addUserAddress=async(token:string,Address:Address):Promise<Address[]>=>{
-    return data.addresses
-}
+export const addUserAddress = async (
+  token: string,
+  address: Address
+): Promise<Address[]> => {
+  try {
+    const response = await api.post(
+      "/user/addresses",
+      { ...address },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if(response.status ===201){
+        return getUserAddresses(token)
+    }
+  } catch {}
+  return [];
+};

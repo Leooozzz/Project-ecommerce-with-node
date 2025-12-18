@@ -1,11 +1,22 @@
 "use server"
 
-import { data } from "@/data"
+
+import { api } from "@/lib/axios"
 import { Address } from "@/types/address"
 
 export const getUserAddresses = async(token:string):Promise<Address[]>=>{
 
+    try{
+        const response=await api.get('/user/addresses',{
+            headers:{
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        if(response.status ===200){
+            return response.data.addresses as Address[]
+        }
+    }catch{
 
+    }return[]
 
-    return data.addresses
 }
